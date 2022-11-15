@@ -13,3 +13,5 @@ I believe there is some memory optimization to be done, namely deallocation, for
 
 While I am doing this for a class, and turning this in is likely okay (and this is due very soon), it is bothering me that this seemingly simple game runs out of memory and I SHOULD be able to play Tetris(a seemingly more complicated game) with this.
 It leads me to believe I am doing something wrong in my code, so I will likely be going back through this to see if deallocation truly is the answer here.
+
+It may also be that my implementation of the board is just too memory intensive, thinking back on where it crashed, this could also make sense, as each node has 5 fields, and my initial test was with a 4x4 board, which has 16 nodes. More investigation needs to be done.

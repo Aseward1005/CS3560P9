@@ -1,0 +1,49 @@
+/** Nodes for the torus. */
+class Node {
+   field Node left;
+   field Node up;
+   field Node right;
+   field Node down;
+   field boolean winner;
+
+   constructor Node new() 
+   {
+      let winner = false;
+      return this;
+   }
+
+   method void setWinner(boolean status) 
+   {
+      let winner = status;
+      return;
+   }
+   method boolean isWinner() {return winner;}
+
+   method void setLeft(Node node) 
+   {
+      let left = node;
+      return;
+   }
+   method Node getLeft() {return left;}
+
+   method void setRight(Node node)
+   {
+      let right = node;
+      return;
+   }
+   method Node getRight() {return right;}
+
+   method void setDown(Node node)
+   {
+      let down = node;
+      return;
+   }
+   method Node getDown() {return down;}
+
+   method void setUp(Node node) 
+   {
+      let up = node;
+      return;
+   }
+   method Node getUp() {return up;}
+}

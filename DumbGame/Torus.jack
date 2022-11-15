@@ -1,0 +1,79 @@
+// the map for the game
+class Torus {
+   //build a torus with height y, width x
+   //build it off of the node that was passed in
+   //side effect, nodes can only belong to one torus
+   constructor Torus new(int x, int y, Node topLeft)
+   {
+      var Node left;
+      var Node right;
+      var Node next;
+      let left = topLeft;
+      let right = left;
+      
+
+      //start with the left border, this is the leftmost AND rightmost column
+      do Torus.makeCol(left, y);
+
+      //set the new column as the new rightmost column
+      //make a new column, connect it to the current rightmost column
+      //set the new column as the new rightmost column
+      
+      while (x > 1) //only need width - 1 links
+      {
+         let next = Node.new();
+         do Torus.makeCol(next, y);
+         do Torus.connect(right, next, y);
+
+         let right = next;
+      }
+
+      //connect the rightmost and leftmost columns
+      do Torus.connect(right, left, y);
+
+      return this;
+   }
+
+   function void makeCol(Node top, int height)
+   {
+      var Node curr;
+      var Node next;
+      let curr = top;
+      let next = Node.new();
+
+      while (height > 1) //only need height-1 links
+      {
+         //set the links
+         do curr.setDown(next);
+         do next.setUp(curr);
+
+         //move the current and next node
+         let curr = curr.getDown();
+         let next = Node.new();
+
+         let height = height - 1;  
+      }
+
+      //form the loop
+      do curr.setDown(top);
+      do top.setUp(curr);
+
+      return;
+   }
+
+   function void connect(Node left, Node right, int height)
+   {
+      while (height > 0)
+      {
+         do left.setRight(right);
+         do right.setLeft(left);
+
+         let left = left.getDown();
+         let right = right.getDown();
+
+         let height = height - 1;
+      }
+
+      return;
+   }
+}

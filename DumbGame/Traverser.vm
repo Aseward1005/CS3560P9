@@ -1,0 +1,45 @@
+function Traverser.new 0
+push constant 1
+call Memory.alloc 1
+pop pointer 0
+push argument 0
+pop this 0
+push pointer 0
+return
+function Traverser.getCurrent 0
+push argument 0
+pop pointer 0
+push this 0
+return
+function Traverser.moveLeft 0
+push argument 0
+pop pointer 0
+push this 0
+call Node.getLeft 1
+pop this 0
+push constant 0
+return
+function Traverser.moveRight 0
+push argument 0
+pop pointer 0
+push this 0
+call Node.getRight 1
+pop this 0
+push constant 0
+return
+function Traverser.moveUp 0
+push argument 0
+pop pointer 0
+push this 0
+call Node.getUp 1
+pop this 0
+push constant 0
+return
+function Traverser.moveDown 0
+push argument 0
+pop pointer 0
+push this 0
+call Node.getDown 1
+pop this 0
+push constant 0
+return

@@ -1,0 +1,32 @@
+/** Handles graph traversal */
+class Traverser {
+   field Node curr;
+   constructor Traverser new(Node start)
+   {
+      let curr = start;
+      return this;
+   }
+
+   method Node getCurrent() {return curr;}
+
+   method void moveLeft() 
+   {
+      let curr = curr.getLeft();
+      return;
+   }
+   method void moveRight() 
+   {
+      let curr = curr.getRight();
+      return;
+   }
+   method void moveUp() 
+   {
+      let curr = curr.getUp();
+      return;
+   }
+   method void moveDown() 
+   {
+      let curr = curr.getDown();
+      return;
+   }
+}

@@ -1,0 +1,109 @@
+function Torus.new 3
+push constant 0
+call Memory.alloc 1
+pop pointer 0
+push argument 2
+pop local 0
+push local 0
+pop local 1
+push local 0
+push argument 1
+call Torus.makeCol 2
+pop temp 0
+label WHILE_EXP0
+push argument 0
+push constant 1
+gt
+not
+if-goto WHILE_END0
+call Node.new 0
+pop local 2
+push local 2
+push argument 1
+call Torus.makeCol 2
+pop temp 0
+push local 1
+push local 2
+push argument 1
+call Torus.connect 3
+pop temp 0
+push local 2
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push local 1
+push local 0
+push argument 1
+call Torus.connect 3
+pop temp 0
+push pointer 0
+return
+function Torus.makeCol 2
+push argument 0
+pop local 0
+call Node.new 0
+pop local 1
+label WHILE_EXP0
+push argument 1
+push constant 1
+gt
+not
+if-goto WHILE_END0
+push local 0
+push local 1
+call Node.setDown 2
+pop temp 0
+push local 1
+push local 0
+call Node.setUp 2
+pop temp 0
+push local 0
+call Node.getDown 1
+pop local 0
+call Node.new 0
+pop local 1
+push argument 1
+push constant 1
+sub
+pop argument 1
+goto WHILE_EXP0
+label WHILE_END0
+push local 0
+push argument 0
+call Node.setDown 2
+pop temp 0
+push argument 0
+push local 0
+call Node.setUp 2
+pop temp 0
+push constant 0
+return
+function Torus.connect 0
+label WHILE_EXP0
+push argument 2
+push constant 0
+gt
+not
+if-goto WHILE_END0
+push argument 0
+push argument 1
+call Node.setRight 2
+pop temp 0
+push argument 1
+push argument 0
+call Node.setLeft 2
+pop temp 0
+push argument 0
+call Node.getDown 1
+pop argument 0
+push argument 1
+call Node.getDown 1
+pop argument 1
+push argument 2
+push constant 1
+sub
+pop argument 2
+goto WHILE_EXP0
+label WHILE_END0
+push constant 0
+return

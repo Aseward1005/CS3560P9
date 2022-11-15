@@ -1,0 +1,66 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/09/HelloWorld/Main.jack
+
+/** actual game program */
+class Main {
+   function void main() {
+      //create the board
+      var Traverser player;
+      var Node position;
+      var int width;
+      var int height;
+      var Node start;
+      var Torus board;
+      var Traverser winner;
+      var InputHandler handler;
+      var char input;
+      var Node endpoint;
+
+      let start = Node.new();
+
+
+      //actual board
+      let height = Keyboard.readInt("set the board height: ");
+      let width = Keyboard.readInt("set the board width: ");
+
+      let board = Torus.new(width, height, start);
+
+
+      //set the endpoint
+      let winner = Traverser.new(start);
+
+      let handler = InputHandler.new(winner);
+
+      //move the endpoint
+      let input = 0;
+      while (~(input = 140))
+      {
+         let input = Keyboard.readChar("set the winning path: ");
+         do handler.updatePosition(input);
+      }
+
+      let endpoint = winner.getCurrent();
+      do endpoint.setWinner(true);
+
+
+      //play the game
+      let player = Traverser.new(start);
+      do handler.setTraverser(player);
+
+      let position = player.getCurrent();
+      let input = 0;
+      while(~(position.isWinner()))
+      {
+         let input = Keyboard.readChar("pick a direction: ");
+         do handler.updatePosition(input);
+
+         let position = player.getCurrent();
+      }
+
+      do Output.printString("You found it");
+
+      return;
+   }
+}

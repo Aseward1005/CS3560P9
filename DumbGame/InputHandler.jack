@@ -1,0 +1,37 @@
+/** translate keystrokes to actual movements */
+class InputHandler {
+   field Traverser position;
+   constructor InputHandler new(Traverser traverser) 
+   {
+      let position = traverser;
+      return this;
+   }
+
+   method void setTraverser(Traverser traverser) 
+   {
+      let position = traverser;
+      return;
+   }
+
+   method void updatePosition(char input)
+   {
+      if (input = 130)
+      {
+         do position.moveLeft();
+      }
+      if (input = 131)
+      {
+         do position.moveUp();
+      }
+      if (input = 132)
+      {
+         do position.moveRight();
+      }
+      if (input = 133)
+      {
+         do position.moveDown();
+      }
+
+      return;
+   }
+}
